@@ -1,0 +1,13 @@
+/node_modules
+/.idea
+npm-debug.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
+app.code-workspace
+# macOS
+.DS_Store

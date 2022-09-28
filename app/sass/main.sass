@@ -1,0 +1,266 @@
+@import "app/fontawesome/scss/fontawesome.scss"
+@import "app/fontawesome/scss/solid.scss"
+@import "app/fontawesome/scss/brands.scss"
+    
+$header_element_bg: #F1F1F1
+$dark_color: #222222
+$mobile_width: 600px
+
+*
+    padding: 0
+    margin: 0
+    border-collapse: collapse
+    position: relative
+
+body
+    font-family: 'Open Sans', sans-serif
+
+header
+    position: absolute
+    background: '#cecece'
+    top: 0
+    left: 0
+    right: 0
+    font-size: 14px
+
+.layout
+    max-width: 1300px
+    margin: 0 auto
+    padding: 0 22px
+
+%input-base
+    border: 0
+    outline: none
+
+.header
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    height: 136px
+
+    @media screen and (max-width: $mobile_width)
+        height: 64px
+
+    &__top
+        padding-top: 24px
+        height: 48px
+        display: flex
+        justify-content: space-between
+        align-items: center
+
+        @media screen and (max-width: $mobile_width)
+            padding-top: 18px
+
+        &__hamburger
+            display: none
+            flex-direction: column
+            justify-content: space-between
+            height: 16px
+            width: 20px
+            cursor: pointer
+
+            @media screen and (max-width: $mobile_width)
+                display: flex
+
+            &__bar
+                height: 2px
+                background: $dark_color
+
+        &__city
+            @media screen and (max-width: $mobile_width)
+                display: none
+
+            &__wrapper
+                display: flex
+                align-items: center
+                cursor: pointer
+
+                &__icon
+                    margin-right: 8px
+
+            &__dropdown
+                display: none
+                position: absolute
+                top: 45px
+                left: 0
+                z-index: 100
+                background: #FBFBFB
+                box-shadow: 0px 7px 38px rgba(44, 62, 106, 0.25)
+                border-radius: 10px
+                width: 384px
+
+                &--active
+                    display: flex
+                    flex-direction: column
+
+                &__search
+                    @extend %input-base
+                    border: 2px solid #ABC8EA
+                    border-radius: 100px
+                    margin:
+                        top: 24px
+                        left: 16px
+                        right: 16px
+                    padding:
+                        right: 10px
+                        left: 25px
+                        top: 14px
+                        bottom: 14px
+
+                &__select
+                    padding: 15px 0
+                    display: flex
+                    flex-wrap: wrap
+                    border-bottom: 1px solid #D8D8D8
+                    margin: 0 16px
+
+                    &__item
+                        background: #0656b4
+                        border-radius: 49px
+                        color: #fff
+                        padding: 9px 17px 9px 17px
+                        line-height: 22px
+                        margin: 4px 8px 4px 0
+                        display: flex
+                        align-items: center
+
+                        
+
+                        &__cross
+                            line-height: 22px
+                            cursor: pointer
+                            margin:
+                                left: 10px
+
+
+                  
+
+                &__list
+                    max-height: 185px
+                    flex: 1 1 auto
+                    overflow-y: scroll
+
+                    &__item
+                        padding: 9px 16px
+                        cursor: pointer
+                        display: flex
+                        flex-direction: column
+
+                        &:hover
+                            background: $header_element_bg
+
+                        &__state
+                            font-size: 12px
+                            line-height: 20px
+                            color: #767676
+
+                &__button
+                    font-size: 12px
+                    font-weight: 500
+                    line-height: 16px
+                    letter-spacing: 2px
+                    text-align: center
+                    padding: 16px 0
+                    border-top: 1px solid #D8D8D8
+                    cursor: pointer
+
+        &__search
+            display: flex
+            align-items: center
+            border-radius: 100px
+            background: $header_element_bg
+            max-width: 592px
+            width: 100%
+            padding: 0 8px
+
+            @media screen and (max-width: $mobile_width)
+                display: none
+
+            &__input
+                background: $header_element_bg
+                padding: 0 10px
+                @extend %input-base
+                flex: 1 1 auto
+                margin: 0 10px
+
+                &::placeholder
+                    text-align: center
+
+        &__like
+            display: flex
+            align-items: center
+
+        &__profile
+            display: flex
+            align-items: center
+
+            @media screen and (max-width: $mobile_width)
+                display: none
+
+            &__name
+                margin-right: 7px
+
+    &__bottom
+        margin-bottom: 19px
+
+        @media screen and (max-width: $mobile_width)
+            display: none
+
+.swiper
+    width: 100%
+    height: 31px
+
+.swiper-slide
+    width: auto !important
+    line-height: 28px
+    padding: 0 10px
+    cursor: pointer
+    align-items: center
+
+.swiper-button-disabled
+    display: none !important
+
+.swiper-button-prev
+    left: 0 !important
+    color: #000 !important
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 15%, rgba(255,255,255,0) 100%)
+    width: 10px !important
+    justify-content: flex-start !important
+    &::after
+        font-size: 16px !important
+        background: rgba(255,255,255,0)
+        z-index: 20
+
+.swiper-button-next
+    right: 0 !important
+    color: #000 !important
+    width: 10px !important
+    justify-content: flex-end !important
+    &::after
+        font-size: 16px !important
+        background: rgba(255,255,255,0)
+        z-index: 20
+
+.active-el
+    background: $header_element_bg
+    border-radius: 34px
+
+.swiper-button-prev__bg
+    position: absolute
+    // top: 0
+    right: auto
+    left: 0
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 15%, rgba(255,255,255,0) 100%)
+    width: 50px
+    height: 44px
+    z-index: 9
+
+.swiper-button-next__bg
+    position: absolute
+    // top: 0
+    right: 0
+    left: auto
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 85%, rgba(255,255,255,1) 100%)
+    width: 50px
+    height: 44px
+    z-index: 9

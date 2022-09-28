@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Студика</title>
+        <link rel="stylesheet" href="css/app.min.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+        />
+    </head>
+    <body>
+        <header>
+            <div class="layout">
+                <div class="header">
+                    <div class="header__top">
+                        <div class="header__top__hamburger">
+                            <div class="header__top__hamburger__bar"></div>
+                            <div class="header__top__hamburger__bar"></div>
+                            <div class="header__top__hamburger__bar"></div>
+                        </div>
+                        <div class="header__top__logo">
+                            <img src="images/dest/logo.svg" alt="Logo" />
+                        </div>
+                        <div class="header__top__city">
+                            <div
+                                class="header__top__city__wrapper"
+                                id="choice_city"
+                            >
+                                <img
+                                    src="images/dest/icon_city.svg"
+                                    alt="alt"
+                                    class="header__top__city__wrapper__icon"
+                                />
+                                <div>Любой регион</div>
+                            </div>
+                            <div
+                                class="header__top__city__dropdown"
+                                id="dropdown_city"
+                            >
+                                <input
+                                    type="text"
+                                    placeholder="Регион, город, населенный пункт"
+                                    class="header__top__city__dropdown__search"
+                                    id="search-city-input"
+                                />
+
+                                <div
+                                    class="header__top__city__dropdown__select"
+                                    id="select-city-block"
+                                >
+                                </div>
+                                <div
+                                    class="header__top__city__dropdown__list"
+                                    id="city-list"
+                                ></div>
+                                <div
+                                    class="header__top__city__dropdown__button"
+                                >
+                                    Сохранить
+                                </div>
+                            </div>
+                        </div>
+                        <div class="header__top__search">
+                            <div class="header__top__search__icon">
+                                <img
+                                    src="images/dest/icon_search.svg"
+                                    alt="Search"
+                                />
+                            </div>
+
+                            <input
+                                type="text"
+                                class="header__top__search__input"
+                                placeholder="Учебное заведение, специальность или профессия"
+                            />
+                        </div>
+                        <div class="header__top__like">
+                            <img src="images/dest/icon_like.svg" alt="heart" />
+                            <div class="header__top__like__count">1</div>
+                        </div>
+                        <div class="header__top__profile">
+                            <div class="header__top__profile__name">
+                                Екатерина
+                            </div>
+                            <img src="images/dest/avatar.svg" alt="avatar" />
+                        </div>
+                    </div>
+                    <div class="header__bottom">
+                        <div class="swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide active-el">Вузы</div>
+                                <div class="swiper-slide">Колледжи</div>
+                                <div class="swiper-slide">Техникумы</div>
+                                <div class="swiper-slide">Училища</div>
+                                <div class="swiper-slide">Специальности</div>
+                                <div class="swiper-slide">Профессии</div>
+                                <div class="swiper-slide">Отзывы</div>
+                                <div class="swiper-slide">
+                                    Учебным заведениям
+                                </div>
+                                <div class="swiper-slide">
+                                    Тест на профориентацию
+                                </div>
+                                <div class="swiper-slide">
+                                    Тест на профориентацию
+                                </div>
+                                <div class="swiper-slide">Техникумы</div>
+                                <div class="swiper-slide">Училища</div>
+                                <div class="swiper-slide">Специальности</div>
+                                <div class="swiper-slide">Профессии</div>
+                            </div>
+                            <div class="swiper-button-next">
+                                <div class="swiper-button-next__bg"></div>
+                            </div>
+                            <div class="swiper-button-prev">
+                                <div class="swiper-button-prev__bg"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <script type="module" src="js/app.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    </body>
+</html>
