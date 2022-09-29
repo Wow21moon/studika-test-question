@@ -3,12 +3,17 @@ const choice_city = document.getElementById('choice_city')
 const city_list = document.getElementById('city-list')
 const select_city_block = document.getElementById('select-city-block')
 const search_city_input = document.getElementById('search-city-input')
+const close_search_city = document.getElementById('close-search-city')
+const city_visible = document.getElementById('city-visible')
 let nameCityArg = []
 let cityData = []
+let sendDATA = []
 
 function init() {
     headerSwiperMenu()
     requestListCity()
+    cleanInputSearchCity()
+   
 }
 
 init()
@@ -60,39 +65,52 @@ function requestListCity() {
                     }
                     return response.json()
                 })
-                .catch((err) => console.log('ошибка' + err))
+                .catch((err) => console.log('ошибка ' + err))
 
             cityData = responseCityList
             console.log('response', cityData)
 
+            cityData.map((state) => {
+                nameCityArg.push({name:state.name, id: state.id})
+                if (state.cities != undefined) {
+                    state.cities.map((city) => {
+                        nameCityArg.push({name:city.name, id: city.id, state: state.name})
+                    })
+                }
+            })
+            formationListCity(nameCityArg)
+            searchCity(nameCityArg)
         }
-        
-        updateCityList()
+
+
 
         dropdown.classList.toggle('header__top__city__dropdown--active')
     })
 }
 
-function updateCityList() {
-    cityData.map((state) => {
-        let newDivState = document.createElement('div')
-        newDivState.classList.add('header__top__city__dropdown__list__item')
-        newDivState.setAttribute('data-id', state.id)
-        newDivState.innerHTML = state.name
-        nameCityArg.push(state.name)
-        city_list.append(newDivState)
-        if (state.cities != undefined) {
-            state.cities.reverse().map((city) => {
-                let newDivCity = document.createElement('div')
-                newDivCity.classList.add(
-                    'header__top__city__dropdown__list__item'
-                )
-                newDivCity.setAttribute('data-id', city.id)
-                nameCityArg.push(city.name)
-                newDivCity.innerHTML += `<span>${city.name}</span><span class="header__top__city__dropdown__list__item__state">${state.name}</span>`
-                newDivState.after(newDivCity)
-            })
+function formationListCity(nameArgCityList, render) {
+    
+    if (render) {
+        city_list.innerHTML = ''
+    }
+    
+    nameArgCityList.map(el => {
+        let newDivItemListCity = document.createElement('div')
+        newDivItemListCity.classList.add('header__top__city__dropdown__list__item')
+        newDivItemListCity.setAttribute('data-id', el.id)
+
+        if(!el.state) {
+            newDivItemListCity.textContent = el.name
+        } else {
+            let newSpanItemListCity = document.createElement('span'),
+                newSpanItemListState = document.createElement('span')
+            newSpanItemListState.classList.add('header__top__city__dropdown__list__item__state')
+            newSpanItemListCity.textContent = el.name
+            newSpanItemListState.textContent = el.state
+            newDivItemListCity.append(newSpanItemListCity)
+            newDivItemListCity.append(newSpanItemListState)
         }
+        city_list.append(newDivItemListCity)
     })
 
 
@@ -100,9 +118,8 @@ function updateCityList() {
         '#city-list .header__top__city__dropdown__list__item'
     )
 
-
     selectCity(prevSelectListCity)
-    searchCity(nameCityArg)
+    
 }
 
 function selectCity(arg) {
@@ -146,39 +163,70 @@ function selectCity(arg) {
             let crossArg = document.querySelectorAll(
                 '.header__top__city__dropdown__select__item .header__top__city__dropdown__select__item__cross'
             )
+            
 
+    
+            
             if (crossArg.length > 0) deleteSelect(crossArg)
+            updateSelectDATA()
         })
     }
 }
 
-function deleteSelect(argDel) {
-    for (let i = 0; i < argDel.length; i++) {
-        argDel[i].addEventListener('click', function () {
+function deleteSelect(argCrossDel) {
+    for (let i = 0; i < argCrossDel.length; i++) {
+        argCrossDel[i].addEventListener('click', function () {
             this.parentElement.remove()
+            updateSelectDATA()
         })
     }
 }
 
 function searchCity(argSearch) {
+    if(!argSearch) return
     search_city_input.addEventListener('input', function () {
         if (search_city_input.value.length > 0) {
-            for (let i = 0; i < argSearch.length; i++) {
-                let current1 = argSearch[i].split('')
-                
-                (function(i) {
-                for (let iw = 0; iw < current1.length; iw++) {
-                    if(search_city_input.value.length == 1) {
-                        if(search_city_input.value == current1[iw])
-                        console.log('совпадение', current1[iw],argSearch[i])
-                    }
-                }
-                })(i)
+            close_search_city.classList.add('header__top__city__dropdown__search__exit--active')
+            let argSearchNew = []
 
-                
-                
-            
+            for (let i = 0; i < argSearch.length; i++) {
+                if (argSearch[i].name.match(RegExp('^' + search_city_input.value.toLowerCase(), 'i'))) {
+                    argSearchNew.push(argSearch[i])
+                }
             }
+
+
+            formationListCity(argSearchNew, true)
+
+        } else {
+            close_search_city.classList.remove('header__top__city__dropdown__search__exit--active')
         }
     })
+}
+
+
+function cleanInputSearchCity() {
+    close_search_city.addEventListener('click', function() {
+        search_city_input.value = ''
+    })
+}
+
+
+function updateSelectDATA() {
+    
+
+
+
+    // let tempSendDATA = document.querySelectorAll('.header__top__city__dropdown__select__item')
+
+    // console.log('tempSendDATA', tempSendDATA)
+    // for (let i = 0; i < tempSendDATA.length; i++) {
+    //     let tmpEl = tempSendDATA[i].textContent
+    //     sendDATA += tmpEl
+    // }
+    // console.log('sendDATA', sendDATA)
+}
+
+function cityVisible() {
+    // city_visible.textContent
 }

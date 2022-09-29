@@ -40,18 +40,24 @@
                                     alt="alt"
                                     class="header__top__city__wrapper__icon"
                                 />
-                                <div>Любой регион</div>
+                                <div id="city-visible">Любой регион</div>
                             </div>
                             <div
                                 class="header__top__city__dropdown"
                                 id="dropdown_city"
                             >
-                                <input
-                                    type="text"
-                                    placeholder="Регион, город, населенный пункт"
-                                    class="header__top__city__dropdown__search"
-                                    id="search-city-input"
-                                />
+                                <div class="header__top__city__dropdown__search">
+                                    <input
+                                        type="text"
+                                        placeholder="Регион, город, населенный пункт"
+                                        class="header__top__city__dropdown__search__input"
+                                        id="search-city-input"
+                                    />
+                                    <div class="header__top__city__dropdown__search__exit" id="close-search-city">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </div>
+                                </div>
+
 
                                 <div
                                     class="header__top__city__dropdown__select"

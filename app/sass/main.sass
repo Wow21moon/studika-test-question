@@ -1,7 +1,7 @@
 @import "app/fontawesome/scss/fontawesome.scss"
 @import "app/fontawesome/scss/solid.scss"
 @import "app/fontawesome/scss/brands.scss"
-    
+
 $header_element_bg: #F1F1F1
 $dark_color: #222222
 $mobile_width: 600px
@@ -94,18 +94,35 @@ header
                     flex-direction: column
 
                 &__search
-                    @extend %input-base
-                    border: 2px solid #ABC8EA
-                    border-radius: 100px
+                    display: flex
                     margin:
                         top: 24px
                         left: 16px
                         right: 16px
-                    padding:
-                        right: 10px
-                        left: 25px
-                        top: 14px
-                        bottom: 14px
+                    
+                    &__input
+                        flex: 1 1 auto
+                        @extend %input-base
+                        border: 2px solid #ABC8EA
+                        border-radius: 100px
+                        padding:
+                            right: 10px
+                            left: 25px
+                            top: 14px
+                            bottom: 14px
+
+                    &__exit
+                        position: absolute
+                        right: 18px
+                        top: 10px
+                        cursor: pointer
+                        font-size: 20px
+                        color: #999
+                        display: none
+
+                        &--active
+                            display: block
+                        
 
                 &__select
                     padding: 15px 0
@@ -124,16 +141,11 @@ header
                         display: flex
                         align-items: center
 
-                        
-
                         &__cross
                             line-height: 22px
                             cursor: pointer
                             margin:
                                 left: 10px
-
-
-                  
 
                 &__list
                     max-height: 185px
